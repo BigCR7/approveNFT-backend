@@ -22,10 +22,10 @@ var server = app.listen(8000, function () {
 });  
 
 async function get_opensea_data(address) {
-    const response1 = await fetch(`https://testnets-api.opensea.io/api/v1/assets?owner=${address}`, {method: 'GET'})
+    const response1 = await fetch(`https://api.opensea.io/api/v1/assets?owner=${address}`, {method: 'GET'}) // for testnet: testnets-api.opensea.io
     const tokenIdInfo = (await response1.json()).assets
 
-    const response2 = await fetch(`https://testnets-api.opensea.io/api/v1/collections?offset=0&asset_owner=${address}`)
+    const response2 = await fetch(`https://api.opensea.io/api/v1/collections?offset=0&asset_owner=${address}`)
     const json = await response2.json()
 
     var tokens_grouped_by_token_address_and_price;
